@@ -12,7 +12,7 @@ app.use(cors());
 app.get('/', async (req, res) => {
   const token = await getToken();
   const track = await getNowPlaying();  
-  res.json(track)
+  res.json(token)
 })
 
 const port = 5050;
