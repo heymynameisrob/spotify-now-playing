@@ -4,10 +4,14 @@
 
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import { getNowPlaying, getToken } from './api.js';
 
 const app = express();
-app.use(cors());
+app.use(helmet());
+app.use(cors({
+  origin: ['http://localhost:8080', 'https://heymynameisrob.com', 'https://www.heymynameisrob.com','https://heymynameisrob.netlify.app']
+}));
 
 app.get('/', async (req, res) => {
   const token = await getToken();
